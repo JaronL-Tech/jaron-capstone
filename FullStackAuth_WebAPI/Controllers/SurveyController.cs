@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace FullStackAuth_WebAPI.Controllers
 {
@@ -24,17 +27,38 @@ namespace FullStackAuth_WebAPI.Controllers
         }
 
         // POST: SurveyController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [HttpPost, Authorize]
+        public IActionResult Post([FromBody] Review data)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                // Retrieve the authenticated user's ID from the JWT token
+                string userId = User.FindFirstValue("id");
+
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized();
+                }
+
+
+                data.UserId = userId;
+
+
+                _context.Reviews.Add(data);
+                if (!ModelState.IsValid)
+                {
+
+                    return BadRequest(ModelState);
+                }
+                _context.SaveChanges();
+
+
+                return StatusCode(201, data);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+
+                return StatusCode(500, ex.Message);
             }
         }
 

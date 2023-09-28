@@ -1,6 +1,9 @@
 ﻿using FullStackAuth_WebAPI.Data;
+using FullStackAuth_WebAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FullStackAuth_WebAPI.Controllers
 {
@@ -18,9 +21,25 @@ namespace FullStackAuth_WebAPI.Controllers
         }
 
         // GET: PaymentTiersController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("Payment"), Authorize]
+        public IActionResult GetUsersPayment()
         {
-            return View();
+            try
+            {
+                // Retrieve the authenticated user's ID from the JWT token
+                string userId = User.FindFirstValue("id");
+
+                
+                var paymentTiers = _context.PaymentTiers.Where(c => c.ID.Equals(userId));
+
+                
+                return StatusCode(200, paymentTiers);
+            }
+            catch (Exception ex)
+            {
+               
+                return StatusCode(500, ex.Message);
+            }
         }
 
         // GET: PaymentTiersController/Create
@@ -30,17 +49,38 @@ namespace FullStackAuth_WebAPI.Controllers
         }
 
         // POST: PaymentTiersController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [HttpPost, Authorize]
+        public IActionResult Post([FromBody] PaymentTier data)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                // Retrieve the authenticated user's ID from the JWT token
+                string userId = User.FindFirstValue("id");
+
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized();
+                }
+
+
+                data.Id = userId;
+
+
+                _context.PaymentTiers.Add(data);
+                if (!ModelState.IsValid)
+                {
+
+                    return BadRequest(ModelState);
+                }
+                _context.SaveChanges();
+
+
+                return StatusCode(201, data);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+
+                return StatusCode(500, ex.Message);
             }
         }
 

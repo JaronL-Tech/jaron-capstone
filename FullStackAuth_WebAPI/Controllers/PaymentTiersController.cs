@@ -15,9 +15,10 @@ namespace FullStackAuth_WebAPI.Controllers
             _context = context;
         }
         // GET: PaymentTiersController
-        public ActionResult Index()
+        public IActionResult GetPaymenttier()
         {
-            return View();
+            var PaymentTiers = _context.PaymentTiers.ToArray();
+            return Ok(PaymentTiers);
         }
 
         // GET: PaymentTiersController/Details/5
@@ -50,20 +51,20 @@ namespace FullStackAuth_WebAPI.Controllers
 
         // POST: PaymentTiersController/Create
         [HttpPost, Authorize]
-        public IActionResult Post([FromBody] PaymentTier data)
+        public IActionResult Post([FromBody] PaymentTier data, int paymentId)
         {
             try
             {
                 // Retrieve the authenticated user's ID from the JWT token
-                string userId = User.FindFirstValue("id");
+                string PaymentId = User.FindFirstValue("id");
 
-                if (string.IsNullOrEmpty(userId))
+                if (string.IsNullOrEmpty(PaymentId))
                 {
                     return Unauthorized();
                 }
 
 
-                data.Id = userId;
+                data.ID = paymentId;
 
 
                 _context.PaymentTiers.Add(data);

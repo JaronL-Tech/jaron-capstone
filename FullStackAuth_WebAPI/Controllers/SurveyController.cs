@@ -1,23 +1,48 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FullStackAuth_WebAPI.Data;
+using FullStackAuth_WebAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace FullStackAuth_WebAPI.Controllers
-{
+{ 
     public class SurveyController : Controller
     {
-        // GET: SurveyController
-        public ActionResult Index()
+        private readonly ApplicationDbContext _context;
+        public SurveyController(ApplicationDbContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        // GET: SurveyController
+        public IActionResult GetSurvey()
+        {
+            var Survey = _context.Surveys.ToArray();
+            return Ok(Survey);
         }
 
         // GET: SurveyController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("Survey"), Authorize]
+        public IActionResult GetUsersSurveys()
         {
-            return View();
+            try
+            {
+                // Retrieve the authenticated user's ID from the JWT token
+                string userId = User.FindFirstValue("id");
+
+
+                var Survey = _context.Surveys.Where(c => c.ID.Equals(userId));
+
+
+                return StatusCode(200, Survey);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex.Message);
+            }
         }
 
         // GET: SurveyController/Create
@@ -28,23 +53,23 @@ namespace FullStackAuth_WebAPI.Controllers
 
         // POST: SurveyController/Create
         [HttpPost, Authorize]
-        public IActionResult Post([FromBody] Review data)
+        public IActionResult Post([FromBody] Survey data, int surveyId)
         {
             try
             {
                 // Retrieve the authenticated user's ID from the JWT token
-                string userId = User.FindFirstValue("id");
+                string SurveyId = User.FindFirstValue("id");
 
-                if (string.IsNullOrEmpty(userId))
+                if (string.IsNullOrEmpty(SurveyId))
                 {
                     return Unauthorized();
                 }
 
 
-                data.UserId = userId;
+                data.Id = surveyId;
 
 
-                _context.Reviews.Add(data);
+                _context.Surveys.Add(data);
                 if (!ModelState.IsValid)
                 {
 

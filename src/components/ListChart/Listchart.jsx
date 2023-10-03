@@ -9,7 +9,7 @@ function Linechart() {
           labels: ["Anime", "Comics", "Pop Culture", "Video games", "Misc"],
           datasets: [
             {
-              label: "Popularity of differnt services",
+              label: "Popularity of differnt Box services",
               data: [FormData],
               fill: false,
               borderWidth: 4,

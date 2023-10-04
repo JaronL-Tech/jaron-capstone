@@ -33,6 +33,15 @@ const Paymenttier = ({ fetchPaymentDetails, user, token }) => {
         <label>Bronze</label>
         <input value={bronze} onChange={(e) => setbronze(e.target.value)} />
       </div>
+      <div>
+        <label>Gold</label>
+        <input value={gold} onChange={(e) => setgold(e.target.value)} />
+      </div>
+      <div>
+        <label>Platinum</label>
+        <input value={platinum} onChange={(e) => setplatinum(e.target.value)} />
+      </div>
+      <button type="submit">Pick a Tier</button>
     </form>
   );
 };

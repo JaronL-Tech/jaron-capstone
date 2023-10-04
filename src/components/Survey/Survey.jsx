@@ -57,19 +57,12 @@ export function SurveyCreatorWidget() {
     // If you use localStorage:
     window.localStorage.setItem("survey-json", creator.text);
     callback(saveNo, true);
-
-    // If you use a web service:
-    saveSurveyJson(
-      "https://your-web-service.com/",
-      creator.JSON,
-      saveNo,
-      callback
-    );
   };
-  // ...
 }
 
 // If you use a web service:
+return <SurveyCreatorComponent creator={creator} />;
+
 function saveSurveyJson(url, json, saveNo, callback) {
   fetch(url, {
     method: "POST",

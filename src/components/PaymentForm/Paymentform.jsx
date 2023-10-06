@@ -1,4 +1,7 @@
 import react from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
 function PaymentForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,6 +34,12 @@ function PaymentForm() {
       <CardElement />
       <button onClick={createSubscription}>
         Subscribe Bronze Tier - 5 Dollars
+      </button>
+      <button onClick={createSubscription}>
+        Subscribe Gold Tier - 10 Dollars
+      </button>
+      <button onClick={createSubscription}>
+        Subscribe Platinum Tier - 15 Dollars
       </button>
       <br />
     </div>

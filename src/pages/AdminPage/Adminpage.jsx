@@ -10,7 +10,7 @@ const AdminPage = ({}) => {
 
   const FetchAdminData = async () => {
     try {
-      let response = await axios.get("https://fakestoreapi.com/products", {
+      let response = await axios.get("https://dummyjson.com/users", {
         headers: {
           Authorization: "Bearer " + token,
         },

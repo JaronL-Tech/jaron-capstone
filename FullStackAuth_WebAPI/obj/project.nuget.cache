@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZoLTxdQPt4xwbEVIcz5hW+MPREwIE5SzXi0Cho0gkN5276+lVrlTabBqtYqGGMMNTb87YJ+bO+ijFiMWNHThWA==",
+  "dgSpecHash": "6VhbosC5lFsJOlkxj4HihPGueqnn0A+Jl4TldD5azK1mZMEWnPCDBvEpsbk3bGNW+QqwjbYGtLVnnfW/tQdf/A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jleac\\Downloads\\FullStackAuth_WebAPI_Starter-main\\JaronFullStackAuth_WebAPI_Starter-main\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\jleac\\OneDrive\\Desktop\\jaroncapstonecode\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jleac\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\jleac\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

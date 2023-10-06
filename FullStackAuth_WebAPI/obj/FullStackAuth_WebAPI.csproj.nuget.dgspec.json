@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jleac\\Downloads\\FullStackAuth_WebAPI_Starter-main\\JaronFullStackAuth_WebAPI_Starter-main\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj": {}
+    "C:\\Users\\jleac\\OneDrive\\Desktop\\jaroncapstonecode\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jleac\\Downloads\\FullStackAuth_WebAPI_Starter-main\\JaronFullStackAuth_WebAPI_Starter-main\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj": {
+    "C:\\Users\\jleac\\OneDrive\\Desktop\\jaroncapstonecode\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jleac\\Downloads\\FullStackAuth_WebAPI_Starter-main\\JaronFullStackAuth_WebAPI_Starter-main\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\jleac\\OneDrive\\Desktop\\jaroncapstonecode\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj",
         "projectName": "FullStackAuth_WebAPI",
-        "projectPath": "C:\\Users\\jleac\\Downloads\\FullStackAuth_WebAPI_Starter-main\\JaronFullStackAuth_WebAPI_Starter-main\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj",
+        "projectPath": "C:\\Users\\jleac\\OneDrive\\Desktop\\jaroncapstonecode\\FullStackAuth_WebAPI\\FullStackAuth_WebAPI.csproj",
         "packagesPath": "C:\\Users\\jleac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jleac\\Downloads\\FullStackAuth_WebAPI_Starter-main\\JaronFullStackAuth_WebAPI_Starter-main\\FullStackAuth_WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\jleac\\OneDrive\\Desktop\\jaroncapstonecode\\FullStackAuth_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jleac\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -3,6 +3,8 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import PaymentForm from "../../components/PaymentForm/PaymentForm";
+import Subscription from "../../components/Subscription/Subscription";
 
 const PaymentPage = ({}) => {
   const { PaymentId } = useParams();
@@ -31,7 +33,7 @@ const PaymentPage = ({}) => {
         <div>
           {""}
           <PaymentForm PaymentForm={PaymentForm} />
-          <Paymenttier Paymenttier={Paymenttier} />
+
           <Subscription Subscription={Subscription} />
         </div>
       ) : null}

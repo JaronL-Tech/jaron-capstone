@@ -17,6 +17,7 @@
     "react-scripts": "5.0.0",
     "stripe": "^13.9.0",
     "survey-creator-react": "^1.9.110",
+    "survey-react-ui": "^1.9.111",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

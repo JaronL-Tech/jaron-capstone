@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
+import AccountPage from "./pages/AccountPage/Accountpage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -37,12 +38,21 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/Payment" element={<PaymentPage />} />
+        <Route path="/Account" element={<AccountPage />} />
 
         <Route
           path="/:Payment"
           element={
             <PrivateRoute>
               <PaymentPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/:Account"
+          element={
+            <PrivateRoute>
+              <AccountPage />
             </PrivateRoute>
           }
         />

@@ -1,5 +1,7 @@
 import { SurveyCreator } from "survey-creator-react";
 import "survey-core/defaultV2.min.css";
+import "survey-creator-core/survey-creator-core.min.css";
+import { SurveyCreatorComponent } from "survey-creator-react";
 
 const creatorOptions = {
   showLogicTab: true,
@@ -52,16 +54,21 @@ const defaultJson = {
 };
 
 export function SurveyCreatorWidget() {
-  // ...
+  const creator = new SurveyCreator(creatorOptions);
+  creator.text =
+    window.localStorage.getItem("survey-json") || JSON.stringify(defaultJson);
   creator.saveSurveyFunc = (saveNo, callback) => {
-    // If you use localStorage:
     window.localStorage.setItem("survey-json", creator.text);
     callback(saveNo, true);
+    saveSurveyJson(
+      "https://dummyjson.com/products",
+      creator.JSON,
+      saveNo,
+      callback
+    );
   };
+  return <SurveyCreatorComponent creator={creator} />;
 }
-
-// If you use a web service:
-return <SurveyCreatorComponent creator={creator} />;
 
 function saveSurveyJson(url, json, saveNo, callback) {
   fetch(url, {

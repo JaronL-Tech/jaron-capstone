@@ -1,6 +1,11 @@
 import react from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { useState } from "react";
+import { CardElement } from "@stripe/react-stripe-js";
+import { PaymentElement } from "@stripe/react-stripe-js";
+import { useElements } from "@stripe/react-stripe-js";
+import { useStripe } from "@stripe/react-stripe-js";
 
 function PaymentForm() {
   const [name, setName] = useState("");
@@ -9,6 +14,21 @@ function PaymentForm() {
   const elements = useElements();
   const createSubscription = async () => {
     try {
+      const paymentMethod = await stripe.createPaymentMethod({
+        type: "card",
+        card: elements.getElement("card"),
+      });
+      const response = await fetch("/api/subscripe", {
+        method: "POST",
+        headers: {
+          contentType: "application/json",
+        },
+        body: ""({
+          name,
+          email,
+          paymentMethod: paymentMethod.id,
+        }),
+      });
     } catch (error) {
       console.error(error);
       alert("PaymentFailed," + error.message);
@@ -32,6 +52,7 @@ function PaymentForm() {
       />
       <br />
       <CardElement />
+      <br />
       <button onClick={createSubscription}>
         Subscribe Bronze Tier - 5 Dollars
       </button>
@@ -41,7 +62,6 @@ function PaymentForm() {
       <button onClick={createSubscription}>
         Subscribe Platinum Tier - 15 Dollars
       </button>
-      <br />
     </div>
   );
 }

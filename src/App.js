@@ -7,10 +7,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import PaymentForm from "./components/PaymentForm/PaymentForm";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -34,15 +36,16 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+
+        <Route
+          path="/:Payment"
+          element={
+            <PrivateRoute>
+              <PaymentPage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
-      <Route
-        path="/:Payment"
-        element={
-          <PrivateRoute>
-            <PaymentPage />
-          </PrivateRoute>
-        }
-      />
       <Footer />
       <Elements stripe={stripePromise}>
         <PaymentForm />

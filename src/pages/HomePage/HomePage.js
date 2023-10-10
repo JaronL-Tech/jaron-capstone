@@ -9,14 +9,15 @@ const HomePage = () => {
   // The "token" value is the JWT token sent from the backend that you will send back in the header of any request requiring authentication
   const [user, token] = useAuth();
   const [cars, setCars] = useState([]);
+  const [Products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetchCars();
+    fetchProducts();
   }, [token]);
 
-  const fetchCars = async () => {
+  const fetchProducts = async () => {
     try {
-      let response = await axios.get("https://localhost:5001/api/cars/myCars", {
+      let response = await axios.get("https://dummyjson.com/products", {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -31,12 +32,6 @@ const HomePage = () => {
     <div className="container">
       {console.log(user)}
       <h1>Home Page for {user.userName}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
-          </p>
-        ))}
     </div>
   );
 };

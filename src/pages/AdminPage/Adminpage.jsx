@@ -22,3 +22,13 @@ const AdminPage = ({}) => {
     }
   };
 };
+return (
+  <div>
+    {AdminPage ? (
+      <div>
+        {""}
+        <listchat listchart={listchart} />
+      </div>
+    ) : null}
+  </div>
+);

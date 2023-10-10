@@ -54,14 +54,14 @@ function PaymentForm() {
       <CardElement />
       <br />
       <button onClick={createSubscription}>
-        Subscribe Bronze 3 items - 5 Dollars
+        Subscribe Bronze 3 unique items - 5 Dollars
       </button>
       <button onClick={createSubscription}>
-        Subscribe Gold 5 items Custom box - 10 Dollars
+        Subscribe Gold contains 5 unique items Custom box - 10 Dollars
       </button>
       <button onClick={createSubscription}>
-        Subscribe Platinum 7 items and a Name Plate and a custom box - 15
-        Dollars
+        Subscribe Platinum contains 7 unique items that comes in a custom box
+        and a name plate - 15 Dollars
       </button>
     </div>
   );

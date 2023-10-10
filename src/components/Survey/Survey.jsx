@@ -53,8 +53,8 @@ const defaultJson = {
   ],
 };
 
-export function SurveyCreatorWidget() {
-  const creator = new SurveyCreator(creatorOptions);
+export function Survey() {
+  const creator = new Survey(creatorOptions);
   creator.text =
     window.localStorage.getItem("survey-json") || JSON.stringify(defaultJson);
   creator.saveSurveyFunc = (saveNo, callback) => {
@@ -89,3 +89,4 @@ function saveSurveyJson(url, json, saveNo, callback) {
       callback(saveNo, false);
     });
 }
+export default Survey;
